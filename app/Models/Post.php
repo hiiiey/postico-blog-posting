@@ -24,9 +24,7 @@ class Post extends Model
         'published_at',
     ];
 
-    /**
-     * Get the options for generating the slug.
-     */
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
