@@ -1,18 +1,17 @@
 <x-app-layout>
     <div class="bg-white min-h-screen">
         <!-- Hero Section -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="border-b pb-8">
-                <h1 class="text-3xl font-bold mb-2">Medium</h1>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="border-b pb-4">
+                <h1 class="text-3xl font-bold mb-4">Medium</h1>
                 <div class="flex items-center space-x-6 overflow-x-auto py-2 scrollbar-hide">
                     <a href="{{ route('dashboard') }}"
-                        class="text-gray-900 font-medium whitespace-nowrap {{ !request('category') ? 'bg-gray-100 px-4 py-2 rounded-full' : '' }}">For
+                        class="{{ !request('category') ? 'medium-nav-active' : 'medium-nav-link' }}">For
                         you</a>
-                    <a href="{{ route('dashboard') }}"
-                        class="text-gray-500 font-medium whitespace-nowrap hover:text-gray-900">Following</a>
+                    <a href="{{ route('dashboard') }}" class="medium-nav-link">Following</a>
                     @foreach ($categories as $category)
                     <a href="{{ route('post.byCategory', $category) }}"
-                        class="text-gray-500 font-medium whitespace-nowrap hover:text-gray-900 {{ request('category') && request('category')->id == $category->id ? 'bg-gray-100 px-4 py-2 rounded-full' : '' }}">
+                        class="{{ request('category') && request('category')->id == $category->id ? 'medium-nav-active' : 'medium-nav-link' }}">
                         {{ $category->name }}
                     </a>
                     @endforeach
@@ -22,13 +21,13 @@
 
         <!-- Main Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <!-- Main Posts Column -->
-                <div class="lg:col-span-2">
-                    <div class="space-y-8">
+                <div class="lg:col-span-8">
+                    <div class="space-y-6">
                         @forelse ($featuredPosts as $post)
-                        <div class="border-b pb-8">
-                            <div class="flex items-center mb-2">
+                        <article class="medium-card">
+                            <div class="medium-author">
                                 <a href="{{ route('profile.show', $post->user->username) }}">
                                     <x-user-avatar :user="$post->user" size="w-6 h-6" />
                                 </a>
@@ -41,15 +40,13 @@
                                 <div class="flex-1">
                                     <a href="{{ route('post.show', ['username' => $post->user->username, 'post' => $post->slug]) }}"
                                         class="group">
-                                        <h2 class="text-xl font-bold mb-2 group-hover:text-gray-700">{{ $post->title
-                                            }}</h2>
-                                        <p class="text-gray-700 line-clamp-2 mb-2">{{
+                                        <h2 class="post-title mb-2 group-hover:text-gray-700">{{ $post->title }}</h2>
+                                        <p class="text-gray-700 line-clamp-2 mb-3 medium-body">{{
                                             Str::limit(strip_tags($post->content), 150) }}</p>
                                     </a>
-                                    <div class="flex items-center text-xs text-gray-500">
+                                    <div class="medium-meta">
                                         <span>{{ $post->created_at->format('M d, Y') }}</span>
-                                    </div>
-                                    <div class="flex items-center text-sm text-gray-500 mt-2">
+                                        <span>·</span>
                                         <span class="flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
@@ -64,11 +61,11 @@
                                 <a href="{{ route('post.show', ['username' => $post->user->username, 'post' => $post->slug]) }}"
                                     class="block">
                                     <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}"
-                                        class="w-full md:w-32 h-32 object-cover">
+                                        class="w-full md:w-28 h-28 object-cover">
                                 </a>
                                 @endif
                             </div>
-                        </div>
+                        </article>
                         @empty
                         <div class="text-center py-8 text-gray-500">No posts available</div>
                         @endforelse
@@ -76,24 +73,24 @@
                 </div>
 
                 <!-- Sidebar -->
-                <div class="hidden lg:block">
+                <div class="hidden lg:block lg:col-span-4">
                     <div class="sticky top-24">
                         <div class="mb-8">
-                            <h3 class="text-lg font-bold mb-4">Staff Picks</h3>
-                            <div class="space-y-4">
+                            <h3 class="text-base font-bold mb-4">Staff Picks</h3>
+                            <div class="space-y-6">
                                 @forelse ($staffPicks as $post)
                                 <div>
-                                    <div class="flex items-center mb-2">
+                                    <div class="medium-author">
                                         <a href="{{ route('profile.show', $post->user->username) }}">
                                             <x-user-avatar :user="$post->user" size="w-5 h-5" />
                                         </a>
                                         <a href="{{ route('profile.show', $post->user->username) }}"
-                                            class="text-sm hover:underline">
+                                            class="text-xs hover:underline">
                                             {{ $post->user->name }}
                                         </a>
                                     </div>
                                     <a href="{{ route('post.show', ['username' => $post->user->username, 'post' => $post->slug]) }}"
-                                        class="text-base font-medium hover:underline">
+                                        class="text-base font-bold hover:underline">
                                         {{ $post->title }}
                                     </a>
                                 </div>
@@ -104,11 +101,10 @@
                         </div>
 
                         <div class="mb-8">
-                            <h3 class="text-lg font-bold mb-4">Recommended topics</h3>
+                            <h3 class="text-base font-bold mb-4">Recommended topics</h3>
                             <div class="flex flex-wrap gap-2">
                                 @foreach ($categories as $category)
-                                <a href="{{ route('post.byCategory', $category) }}"
-                                    class="bg-gray-100 px-4 py-2 rounded-full text-sm hover:bg-gray-200">
+                                <a href="{{ route('post.byCategory', $category) }}" class="medium-tag">
                                     {{ $category->name }}
                                 </a>
                                 @endforeach

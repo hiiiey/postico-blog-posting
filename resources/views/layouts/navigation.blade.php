@@ -6,20 +6,20 @@
             <div class="flex items-center">
                 <!-- Logo -->
                 <a href="{{ route('dashboard') }}" class="flex items-center">
-                    <img src="{{ asset('postico.png') }}" alt="Postico" class="h-8 w-auto">
+                    <img src="{{ asset('postico.png') }}" alt="Postico" class="h-10 w-auto">
                 </a>
             </div>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-5">
                 <!-- Search -->
-                <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1">
+                <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                     <input type="text" placeholder="Search"
-                        class="bg-transparent border-none outline-none p-1 text-sm w-40">
+                        class="bg-transparent border-none outline-none p-1 text-sm w-56">
                 </div>
 
                 @auth
@@ -78,7 +78,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
-                    <span>Write</span>
+                    <span class="text-sm">Write</span>
                 </a>
 
                 <!-- Settings Dropdown -->
