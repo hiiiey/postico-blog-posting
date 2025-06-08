@@ -10,7 +10,6 @@ class PeopleController extends Controller
 {
     public function index()
     {
-        // Get all users except the currently authenticated user
         $users = User::where('id', '!=', Auth::id())->get();
 
         return view('people.index', compact('users'));

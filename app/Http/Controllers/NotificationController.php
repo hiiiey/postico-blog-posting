@@ -29,7 +29,6 @@ class NotificationController extends Controller
     {
         $notification = DatabaseNotification::findOrFail($id);
 
-        // Check if the notification belongs to the authenticated user
         if (
             $notification->notifiable_id === Auth::id() &&
             $notification->notifiable_type === get_class(Auth::user())
