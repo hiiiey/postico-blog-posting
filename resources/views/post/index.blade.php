@@ -1,6 +1,5 @@
 <x-app-layout>
     <div class="bg-white min-h-screen">
-        <!-- Hero Section with Categories -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="border-b pb-8">
                 <div class="flex items-center space-x-6 overflow-x-auto py-2 scrollbar-hide">
@@ -18,10 +17,8 @@
             </div>
         </div>
 
-        <!-- Main Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Main Posts Column -->
                 <div class="lg:col-span-2">
                     <div>
                         @forelse ($posts as $post)
@@ -36,7 +33,6 @@
                     </div>
                 </div>
 
-                <!-- Sidebar -->
                 <div class="hidden lg:block">
                     <div class="sticky top-24">
                         <div class="mb-8">
