@@ -1,14 +1,12 @@
 <x-app-layout>
     <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 py-8">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">Edit Post</h1>
                 <p class="text-gray-600 font-medium">{{ $post->title }}</p>
             </div>
 
             <div class="space-y-8">
-                <!-- Main Content Card -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-xl border-0 p-6">
                     <div class="pb-6 border-b border-gray-100">
                         <div class="flex items-center justify-between">
@@ -51,7 +49,6 @@
                             @csrf
                             @method('put')
 
-                            <!-- Title -->
                             <div class="space-y-2">
                                 <label for="title" class="text-base font-medium">Post Title</label>
                                 <input id="title" name="title" value="{{ old('title', $post->title) }}"
@@ -63,7 +60,6 @@
                                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
                             </div>
 
-                            <!-- Category and Publish Date -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                                 <div class="space-y-2">
                                     <label for="category_id" class="text-base font-medium flex items-center space-x-2">
@@ -112,7 +108,6 @@
 
                             <div class="my-6 border-t border-gray-100"></div>
 
-                            <!-- Current Image -->
                             <div class="space-y-4">
                                 <label class="text-base font-medium flex items-center space-x-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="24" height="24"
@@ -130,7 +125,6 @@
                                 </div>
                             </div>
 
-                            <!-- Image Upload -->
                             <div class="space-y-4 mt-6">
                                 <label for="image" class="text-base font-medium flex items-center space-x-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="24" height="24"
@@ -190,7 +184,6 @@
 
                             <div class="my-6 border-t border-gray-100"></div>
 
-                            <!-- Content -->
                             <div class="space-y-2">
                                 <label for="content" class="text-base font-medium">Content</label>
                                 <textarea id="content" name="content"
@@ -203,7 +196,6 @@
                                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
                             </div>
 
-                            <!-- Action Buttons -->
                             <div class="flex justify-end mt-8">
                                 <button type="submit"
                                     class="inline-flex items-center px-8 py-2 bg-blue-600 border border-transparent rounded-full font-semibold text-white hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
@@ -239,11 +231,10 @@
             const charCountEl = document.getElementById('charCount');
             const wordStatsEl = document.getElementById('wordStats');
 
-            // Helper functions
             function updateWordCount() {
                 const text = contentTextarea.value.trim();
                 const words = text ? text.split(/\s+/).filter(word => word.length > 0).length : 0;
-                const readTime = Math.ceil(words / 200); // 200 words per minute
+                const readTime = Math.ceil(words / 200);
                 const chars = text.length;
                 
                 wordCountEl.textContent = `${words} words`;
@@ -259,7 +250,6 @@
                 }
             }
 
-            // Handle image upload
             function handleImageUpload(file) {
                 if (file) {
                     const reader = new FileReader();
@@ -272,7 +262,6 @@
                 }
             }
 
-            // Event listeners
             contentTextarea.addEventListener('input', updateWordCount);
             
             imageInput.addEventListener('change', function(e) {
@@ -287,7 +276,6 @@
                 imagePreview.classList.add('hidden');
             });
 
-            // Drag and drop
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                 dropzone.addEventListener(eventName, preventDefaults, false);
             });
@@ -323,7 +311,6 @@
                 }
             }, false);
 
-            // Initialize with current content
             updateWordCount();
         });
     </script>

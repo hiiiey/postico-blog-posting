@@ -1,5 +1,4 @@
 <x-app-layout>
-    <!-- Fixed background hero image that stays in place while content scrolls over it -->
     <div class="fixed inset-0 w-full h-screen z-0">
         @if ($post->image)
         <div class="w-full h-full">
@@ -10,7 +9,6 @@
         <div class="w-full h-full bg-gradient-to-b from-gray-900 to-gray-700"></div>
         @endif
 
-        <!-- Scroll indicator at the bottom -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -19,26 +17,20 @@
         </div>
     </div>
 
-    <!-- Blank spacer to create room for fixed hero -->
     <div class="h-screen w-full"></div>
 
-    <!-- Content that scrolls over the fixed background -->
     <div class="relative z-10 bg-white min-h-screen rounded-t-3xl shadow-2xl">
-        <!-- Main content heading with title and category -->
         <div class="pt-12 pb-6 px-4 max-w-4xl mx-auto">
-            <!-- Category badge -->
             <a href="{{ route('post.byCategory', $post->category) }}"
                 class="inline-block px-4 py-1.5 bg-gray-100 text-gray-700 text-sm font-medium rounded-full hover:bg-gray-200 transition mb-5">
                 {{ $post->category->name }}
             </a>
 
-            <!-- Post title -->
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                 {{ $post->title }}
             </h1>
         </div>
 
-        <!-- Author bar - positioned slightly above the main content -->
         <div class="bg-white border-y border-gray-100 sticky top-0 z-20 px-4 py-3 shadow-sm">
             <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-4">
                 <div class="flex items-center">
@@ -67,16 +59,13 @@
             </div>
         </div>
 
-        <!-- Main article content -->
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="prose prose-lg max-w-none font-serif">
                 {!! nl2br(e($post->content)) !!}
             </div>
 
-            <!-- Post actions -->
             <div
                 class="mt-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-gray-200 pt-8">
-                <!-- Author Actions -->
                 @if ($post->user_id === Auth::id())
                 <div class="flex gap-4">
                     <a href="{{ route('post.edit', $post->slug) }}"
@@ -104,11 +93,9 @@
                 </div>
                 @endif
 
-                <!-- Clap Button -->
                 <x-clap-button :post="$post" />
             </div>
 
-            <!-- Social sharing -->
             <div class="mt-12 flex items-center gap-4 border-t border-gray-200 pt-8">
                 <span class="text-sm font-medium text-gray-500">SHARE THIS POST</span>
                 <div class="flex gap-3">
@@ -137,7 +124,6 @@
             </div>
         </div>
 
-        <!-- Related posts section -->
         <div class="bg-gray-50 py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-2xl font-bold mb-12 text-center">More from {{ $post->category->name }}</h2>
@@ -206,17 +192,14 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Hide scrollbar in webkit browsers */
         ::-webkit-scrollbar {
             display: none;
         }
 
-        /* Hide scrollbar for IE, Edge and Firefox */
         body {
             -ms-overflow-style: none;
-            /* IE and Edge */
+
             scrollbar-width: none;
-            /* Firefox */
         }
     </style>
 </x-app-layout>
