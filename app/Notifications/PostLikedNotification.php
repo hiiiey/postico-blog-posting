@@ -16,9 +16,7 @@ class PostLikedNotification extends Notification
     protected $user;
     protected $post;
 
-    /**
-     * Create a new notification instance.
-     */
+
     public function __construct(User $user, Post $post)
     {
         $this->user = $user;
