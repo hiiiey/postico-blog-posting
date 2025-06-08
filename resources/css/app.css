@@ -1,11 +1,8 @@
-/* Import Tailwind CSS */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Custom styling for Medium clone */
 @layer base {
-    /* Base typography */
     h1, h2, h3, h4, h5, h6 {
         font-family: theme('fontFamily.sans');
         font-weight: theme('fontWeight.bold');
@@ -21,7 +18,6 @@
         font-size: theme('fontSize.3xl');
     }
     
-    /* Medium-style bold text */
     strong, b {
         font-weight: theme('fontWeight.bold');
         font-size: theme('fontSize.xl');
@@ -29,7 +25,6 @@
 }
 
 @layer components {
-    /* Article title styling */
     .medium-title {
         font-family: theme('fontFamily.sans');
         font-size: theme('fontSize.xl');
@@ -37,7 +32,6 @@
         color: theme('colors.gray.900');
     }
     
-    /* Post titles - match Medium's exact styling */
     .post-title {
         font-family: theme('fontFamily.sans');
         font-size: theme('fontSize.xl');
@@ -45,7 +39,6 @@
         color: theme('colors.gray.900');
     }
     
-    /* Medium subtitle style */
     .medium-subtitle {
         font-family: theme('fontFamily.sans');
         font-size: theme('fontSize.base');
@@ -53,21 +46,18 @@
         line-height: theme('lineHeight.relaxed');
     }
     
-    /* Medium body text style */
     .medium-body {
         font-family: theme('fontFamily.serif');
         font-size: theme('fontSize.base');
         line-height: theme('lineHeight.relaxed');
     }
 
-    /* Medium card styling */
     .medium-card {
         border-bottom: 1px solid theme('colors.gray.200');
         padding-bottom: theme('spacing.6');
         margin-bottom: theme('spacing.6');
     }
     
-    /* Medium tag styling */
     .medium-tag {
         background-color: theme('colors.gray.100');
         border-radius: 9999px;
@@ -79,7 +69,6 @@
         color: theme('colors.gray.700');
     }
     
-    /* Medium navigation styling */
     .medium-nav-link {
         font-size: theme('fontSize.sm');
         color: theme('colors.gray.500');
@@ -95,7 +84,6 @@
         font-weight: theme('fontWeight.medium');
     }
     
-    /* Medium author info */
     .medium-author {
         display: flex;
         align-items: center;
@@ -103,7 +91,6 @@
         margin-bottom: theme('spacing.2');
     }
     
-    /* Medium meta info (date, read time) */
     .medium-meta {
         display: flex;
         align-items: center;
@@ -115,12 +102,12 @@
 
 @layer utilities {
     .scrollbar-hide {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
     }
     
     .scrollbar-hide::-webkit-scrollbar {
-        display: none; /* Chrome, Safari and Opera */
+        display: none; 
     }
     
     .line-clamp-2 {
