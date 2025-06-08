@@ -34,7 +34,6 @@ class ClapController extends Controller
                 'user_id' => $user->id,
             ]);
 
-            // Send notification to post author if they're not the same as the clapper
             if ($post->user_id !== $user->id) {
                 $post->user->notify(new PostLikedNotification($user, $post));
             }
