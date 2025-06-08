@@ -1,6 +1,5 @@
 <div class="border border-gray-100 rounded-xl hover:shadow-md transition-all duration-300 overflow-hidden">
     <div class="p-6">
-        <!-- Author info -->
         <div class="flex items-center mb-4">
             <a href="{{ route('profile.show', $post->user->username) }}"
                 class="flex items-center hover:opacity-80 transition-opacity">
@@ -12,7 +11,6 @@
             </a>
         </div>
 
-        <!-- Post content -->
         <div class="flex flex-col md:flex-row gap-6">
             <div class="flex-1">
                 <a href="{{ route('post.show', ['username' => $post->user->username, 'post' => $post->slug]) }}"
@@ -22,7 +20,6 @@
                     <p class="text-gray-700 line-clamp-2 mb-4">{{ Str::limit(strip_tags($post->content), 150) }}</p>
                 </a>
 
-                <!-- Post metadata -->
                 <div class="flex items-center text-xs text-gray-500 mt-4">
                     @if($post->category)
                     <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-xs font-medium">{{

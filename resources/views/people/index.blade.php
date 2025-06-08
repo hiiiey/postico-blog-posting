@@ -82,7 +82,6 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Toggle button appearance
                 if (button.innerText === 'Follow') {
                     button.innerText = 'Unfollow';
                     button.classList.remove('bg-indigo-600', 'text-white', 'hover:bg-indigo-700');
