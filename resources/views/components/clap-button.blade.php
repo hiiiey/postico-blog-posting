@@ -1,7 +1,6 @@
 @props(['post'])
 
 @auth
-<!-- Clap Section -->
 <div x-data="{
         hasClapped: {{ auth()->user()->hasClapped($post) ? 'true' : 'false' }},
         count: {{ $post->claps()->count() }},
@@ -34,7 +33,6 @@
     </button>
     <span class="text-gray-700 font-medium" x-text="count"></span>
 </div>
-<!-- Clap Section -->
 @else
 <div class="flex items-center gap-3">
     <a href="{{ route('login') }}" class="rounded-full bg-gray-100 p-2 hover:bg-gray-200 transition">

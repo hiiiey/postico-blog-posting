@@ -1,17 +1,14 @@
 <nav x-data="{ open: false, notificationsOpen: false }"
     class="bg-white border-b border-gray-100 fixed top-0 left-0 right-0 z-50">
-    <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex items-center">
-                <!-- Logo -->
                 <a href="{{ route('dashboard') }}" class="flex items-center">
                     <img src="{{ asset('postico.png') }}" alt="Postico" class="h-10 w-auto">
                 </a>
             </div>
 
             <div class="flex items-center space-x-5">
-                <!-- Search -->
                 <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -23,7 +20,6 @@
                 </div>
 
                 @auth
-                <!-- Notifications -->
                 <div class="relative" x-data="notificationSystem()">
                     <button @click="toggleNotifications"
                         class="text-gray-500 hover:text-gray-700 focus:outline-none relative">
@@ -71,7 +67,6 @@
                     </div>
                 </div>
 
-                <!-- Write Link -->
                 <a href="{{ route('post.create') }}" class="hidden md:flex items-center space-x-1 text-gray-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -81,7 +76,6 @@
                     <span class="text-sm">Write</span>
                 </a>
 
-                <!-- Settings Dropdown -->
                 <div class="flex items-center">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -104,7 +98,6 @@
                                 {{ __('People You May Know') }}
                             </x-dropdown-link>
 
-                            <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
@@ -134,7 +127,6 @@
                 </a>
                 @endguest
 
-                <!-- Mobile menu button -->
                 <div class="flex items-center md:hidden">
                     <button @click="open = !open" class="text-gray-500 hover:text-gray-600 focus:outline-none">
                         <svg x-show="!open" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -151,7 +143,6 @@
         </div>
     </div>
 
-    <!-- Mobile Navigation Menu -->
     <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @auth
@@ -171,7 +162,6 @@
                 {{ __('People You May Know') }}
             </x-responsive-nav-link>
 
-            <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
@@ -204,7 +194,6 @@
             init() {
                 this.fetchNotifications();
                 
-                // Refresh notifications every minute
                 setInterval(() => {
                     this.fetchNotifications();
                 }, 60000);
