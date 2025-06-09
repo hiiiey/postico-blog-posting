@@ -1,1 +1,1 @@
-<img src="/logo.svg" class="h-4" alt="">
+<img src="{{ asset('postico.svg') }}" class="h-4" alt="Postico">

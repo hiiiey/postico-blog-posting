@@ -3,7 +3,7 @@
         <!-- Hero Section -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="border-b pb-4">
-                <h1 class="text-3xl font-bold mb-4">Medium</h1>
+
                 <div class="flex items-center space-x-6 overflow-x-auto py-2 scrollbar-hide">
                     <a href="{{ route('dashboard') }}"
                         class="{{ !request('category') ? 'medium-nav-active' : 'medium-nav-link' }}">For
