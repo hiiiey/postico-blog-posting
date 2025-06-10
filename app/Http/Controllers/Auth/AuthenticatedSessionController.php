@@ -12,8 +12,13 @@ use Illuminate\View\View;
 class AuthenticatedSessionController extends Controller
 {
 
-    public function create(): View
+    public function create(): View|RedirectResponse
     {
+        // If already authenticated, redirect to dashboard
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
+
         return view('auth.login');
     }
 
