@@ -1,4 +1,15 @@
 <x-guest-layout>
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-bold mb-3 text-gray-900">
+            Welcome
+            <span
+                class="inline-block bg-gradient-to-r from-gray-600 via-gray-800 to-gray-600 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient">
+                Back
+            </span>
+        </h1>
+        <p class="text-gray-600">Sign in to continue your journey</p>
+    </div>
+
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
@@ -23,20 +34,21 @@
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox"
-                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    class="rounded border-gray-200 text-gray-900 shadow-sm focus:ring-gray-500 transition-colors"
+                    name="remember">
+                <span class="ms-2 text-gray-600">{{ __('Remember me') }}</span>
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-between mt-8">
             @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            <a class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
                 href="{{ route('password.request') }}">
                 {{ __('Forgot your password?') }}
             </a>
             @endif
 
-            <x-primary-button class="ms-3">
+            <x-primary-button>
                 {{ __('Log in') }}
             </x-primary-button>
         </div>

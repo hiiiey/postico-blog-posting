@@ -1,4 +1,15 @@
 <x-guest-layout>
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-bold mb-3 text-gray-900">
+            Join Our
+            <span
+                class="inline-block bg-gradient-to-r from-gray-600 via-gray-800 to-gray-600 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient">
+                Community
+            </span>
+        </h1>
+        <p class="text-gray-600">Create an account to start your journey</p>
+    </div>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -41,13 +52,12 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                href="{{ route('login') }}">
+        <div class="flex items-center justify-between mt-8">
+            <a class="text-sm text-gray-600 hover:text-gray-900 transition-colors" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button>
                 {{ __('Register') }}
             </x-primary-button>
         </div>
