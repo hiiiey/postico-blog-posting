@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="bg-gradient-to-b from-indigo-50 to-white py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Profile Header -->
+
             <div class="bg-white shadow-sm sm:rounded-lg overflow-hidden">
-                <!-- Cover Photo Area -->
+
                 <div class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 relative">
-                    <!-- User Avatar -->
+
                     <div class="absolute -bottom-16 left-8">
                         <div class="rounded-full border-4 border-white shadow-md bg-white">
                             <x-user-avatar :user="$user" size="w-32 h-32" />
@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <!-- Profile Info Area -->
+
                 <div class="pt-20 px-8 pb-8">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div>
@@ -48,13 +48,12 @@
                 </div>
             </div>
 
-            <!-- Posts Section -->
+
             <div class="mt-8">
                 <div class="bg-white shadow-sm sm:rounded-lg p-6">
                     <div class="flex items-center justify-between mb-6 border-b pb-4">
                         <h2 class="text-2xl font-bold text-gray-800">Posts</h2>
 
-                        <!-- Stats Display -->
                         <div class="flex space-x-6">
                             <div class="text-center">
                                 <p class="text-xs text-gray-500">Posts</p>
@@ -63,7 +62,6 @@
                         </div>
                     </div>
 
-                    <!-- Posts Grid -->
                     <div class="space-y-8">
                         @forelse ($posts as $p)
                         <x-post-item :post="$p"></x-post-item>
@@ -81,7 +79,6 @@
                         @endforelse
                     </div>
 
-                    <!-- Pagination if needed -->
                     @if ($posts->hasPages())
                     <div class="mt-8 pt-4 border-t">
                         {{ $posts->links() }}
