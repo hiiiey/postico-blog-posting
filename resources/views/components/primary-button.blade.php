@@ -1,17 +1,31 @@
 @props(['href' => null])
 
 @if ($href)
-<a href="{{ $href }}" {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center px-4 py-2
-    bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest
-    hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500
-    focus:ring-offset-2 transition ease-in-out duration-150']) }}>
+<a href="{{ $href }}" {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center justify-center
+    rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2
+    focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-900
+    hover:bg-gray-800 text-white border-0 px-8 py-3 text-base group']) }}>
     {{ $slot }}
+    <span class="ml-2 group-hover:translate-x-1 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+        </svg>
+    </span>
 </a>
 @else
-<button {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center px-4 py-2 bg-gray-800 border
-    border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700
-    focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
-    transition ease-in-out duration-150']) }}>
+<button {{ $attributes->merge(['type' => 'submit', 'class' => 'inline-flex items-center justify-center rounded-md
+    font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2
+    focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-900
+    hover:bg-gray-800 text-white border-0 px-8 py-3 text-base group']) }}>
     {{ $slot }}
+    <span class="ml-2 group-hover:translate-x-1 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+        </svg>
+    </span>
 </button>
 @endif
