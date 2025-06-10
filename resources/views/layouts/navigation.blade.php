@@ -50,12 +50,19 @@
                                 class="px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-0 cursor-pointer"
                                 :class="{ 'bg-blue-50': notification.read_at === null }">
                                 <div class="flex items-start">
-                                    <p class="text-sm">
+                                    <p class="text-sm" x-show="notification.type.includes('PostLikedNotification')">
                                         <span x-text="notification.data.user_name" class="font-semibold"></span>
                                         liked your post:
                                         <a :href="'/@' + '{{ Auth::user()->username }}/' + notification.data.post_slug"
                                             class="font-medium text-gray-900 hover:underline"
                                             x-text="notification.data.post_title"></a>
+                                    </p>
+                                    <p class="text-sm" x-show="notification.type.includes('UserFollowedNotification')">
+                                        <a :href="'/@' + notification.data.username"
+                                            class="font-semibold hover:underline">
+                                            <span x-text="notification.data.user_name"></span>
+                                        </a>
+                                        started following you
                                     </p>
                                 </div>
                                 <div class="mt-1">
