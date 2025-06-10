@@ -1,15 +1,13 @@
 <x-app-layout>
     <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 py-8">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
+
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">Account Settings</h1>
                 <p class="text-gray-600">Manage your profile information and account preferences</p>
             </div>
 
-            <!-- Settings Container -->
             <div class="bg-white shadow-sm sm:rounded-lg overflow-hidden">
-                <!-- Tabs -->
                 <div class="border-b border-gray-200"
                     x-data="{ activeTab: window.location.hash ? window.location.hash.substring(1) : 'personal' }">
                     <div class="flex overflow-x-auto">
@@ -48,7 +46,6 @@
                         </button>
                     </div>
 
-                    <!-- Personal Information Tab Panel -->
                     <div x-show="activeTab === 'personal'" class="p-6 space-y-6">
                         <div class="pb-6 border-b">
                             <div class="flex items-center space-x-2">
@@ -68,7 +65,6 @@
                         </div>
                     </div>
 
-                    <!-- Password & Security Tab Panel -->
                     <div x-show="activeTab === 'security'" class="p-6 space-y-6">
                         <div class="pb-6 border-b">
                             <div class="flex items-center space-x-2">
@@ -87,7 +83,6 @@
                         </div>
                     </div>
 
-                    <!-- Account Management Tab Panel -->
                     <div x-show="activeTab === 'account'" class="p-6 space-y-6">
                         <div class="pb-6 border-b">
                             <div class="flex items-center space-x-2">
@@ -114,9 +109,8 @@
     </div>
 
     <script>
-        // Check for hash on page load and set the active tab accordingly
         document.addEventListener('DOMContentLoaded', function() {
-            // If there's a hash, set it to the active tab
+
             if (window.location.hash) {
                 const hash = window.location.hash.substring(1);
                 if (['personal', 'security', 'account'].includes(hash)) {

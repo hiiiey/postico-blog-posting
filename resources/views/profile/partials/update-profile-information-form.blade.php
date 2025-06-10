@@ -7,7 +7,6 @@
         @csrf
         @method('patch')
 
-        <!-- Avatar Section -->
         <div class="space-y-4">
             <label class="text-base font-medium flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24"
@@ -87,7 +86,6 @@
 
         <div class="border-t border-gray-100 my-6 pt-4"></div>
 
-        <!-- Basic Information -->
         <div class="space-y-6">
             <h3 class="text-base font-medium flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24"
@@ -99,7 +97,6 @@
                 <span>Personal Information</span>
             </h3>
 
-            <!-- Name -->
             <div class="space-y-2">
                 <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
                 <input id="name" name="name" type="text" value="{{ old('name', $user->name) }}"
@@ -108,7 +105,6 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-1" />
             </div>
 
-            <!-- Username -->
             <div class="space-y-2">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
                 <div class="relative">
@@ -124,7 +120,6 @@
                 <x-input-error :messages="$errors->get('username')" class="mt-1" />
             </div>
 
-            <!-- Bio -->
             <div class="space-y-2">
                 <label for="bio" class="block text-sm font-medium text-gray-700">Bio</label>
                 <textarea id="bio" name="bio" rows="3"
@@ -137,7 +132,6 @@
 
         <div class="border-t border-gray-100 my-6 pt-4"></div>
 
-        <!-- Contact Information -->
         <div class="space-y-6">
             <h3 class="text-base font-medium flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="24" height="24" viewBox="0 0 24 24"
@@ -148,7 +142,6 @@
                 <span>Contact Information</span>
             </h3>
 
-            <!-- Email -->
             <div class="space-y-2">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
                 <input id="email" name="email" type="email" value="{{ old('email', $user->email) }}"
@@ -188,7 +181,6 @@
 
         <div class="border-t border-gray-100 my-6 pt-4"></div>
 
-        <!-- Submit Button -->
         <div class="flex items-center justify-between">
             <div>
                 @if (session('status') === 'profile-updated')
@@ -227,7 +219,6 @@
             const selectedFilename = document.getElementById('selected-filename');
             const removeSelectedImageBtn = document.getElementById('remove-selected-image');
 
-            // Handle file selection
             imageInput.addEventListener('change', function(e) {
                 if (this.files && this.files[0]) {
                     const file = this.files[0];
@@ -236,7 +227,7 @@
             });
 
             function displaySelectedFile(file) {
-                // Display file preview
+
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     previewThumbnail.src = e.target.result;
@@ -244,25 +235,23 @@
                     uploadPreview.classList.remove('hidden');
                     selectedFilename.textContent = file.name;
                     
-                    // Add a "selected" style to the dropzone
+
                     dropzone.classList.add('border-green-500', 'bg-green-50');
                     dropzone.classList.remove('border-gray-300', 'hover:border-gray-400', 'hover:bg-gray-50');
                 };
                 reader.readAsDataURL(file);
             }
 
-            // Remove selected image
+
             removeSelectedImageBtn.addEventListener('click', function() {
                 imageInput.value = '';
                 uploadPlaceholder.classList.remove('hidden');
                 uploadPreview.classList.add('hidden');
                 
-                // Reset dropzone styling
                 dropzone.classList.remove('border-green-500', 'bg-green-50', 'border-blue-500', 'bg-blue-50');
                 dropzone.classList.add('border-gray-300', 'hover:border-gray-400', 'hover:bg-gray-50');
             });
 
-            // Drag and drop
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                 dropzone.addEventListener(eventName, preventDefaults, false);
             });
