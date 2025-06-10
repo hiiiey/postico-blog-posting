@@ -1,6 +1,5 @@
 <x-app-layout>
     <div class="bg-white min-h-screen">
-        <!-- Hero Section -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="border-b pb-4">
 
@@ -19,10 +18,9 @@
             </div>
         </div>
 
-        <!-- Main Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Main Posts Column -->
+
                 <div class="lg:col-span-8">
                     <div class="space-y-6">
                         @forelse ($featuredPosts as $post)
@@ -72,7 +70,6 @@
                     </div>
                 </div>
 
-                <!-- Sidebar -->
                 <div class="hidden lg:block lg:col-span-4">
                     <div class="sticky top-24">
                         <div class="mb-8">
