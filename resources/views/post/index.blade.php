@@ -74,10 +74,12 @@
                                         </div>
                                     </div>
                                     <x-follow-ctr :user="$user">
+                                        @if(auth()->id() !== $user->id)
                                         <button x-text="following ? 'Following' : 'Follow'"
                                             :class="following ? 'text-gray-600' : 'text-medium-green'"
                                             class="text-sm font-medium hover:text-green-800" @click="follow()">
                                         </button>
+                                        @endif
                                     </x-follow-ctr>
                                 </div>
                                 @endforeach
