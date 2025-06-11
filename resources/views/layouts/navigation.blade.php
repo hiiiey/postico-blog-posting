@@ -9,6 +9,7 @@
             </div>
 
             <div class="flex items-center space-x-5">
+                @auth
                 <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1.5">
                     <form action="{{ route('search') }}" method="GET" class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
@@ -21,7 +22,6 @@
                     </form>
                 </div>
 
-                @auth
                 <div class="relative" x-data="notificationSystem()">
                     <button @click="toggleNotifications"
                         class="text-gray-500 hover:text-gray-700 focus:outline-none relative">
@@ -154,6 +154,7 @@
 
     <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            @auth
             <div class="px-4 py-2">
                 <form action="{{ route('search') }}" method="GET"
                     class="flex items-center bg-gray-100 rounded-full px-3 py-1.5">
@@ -167,7 +168,6 @@
                 </form>
             </div>
 
-            @auth
             <x-responsive-nav-link :href="route('profile.edit')">
                 {{ __('Profile') }}
             </x-responsive-nav-link>
