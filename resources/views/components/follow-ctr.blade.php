@@ -10,7 +10,10 @@
                 this.followersCount = res.data.followersCount
             })
             .catch(err => {
-                console.log(err)
+                if (err.response && err.response.status === 422 && err.response.data.error) {
+                    alert(err.response.data.error);
+                }
+                console.log(err);
             })
     }
 }">
