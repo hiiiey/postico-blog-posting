@@ -17,30 +17,32 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
+    <div class="min-h-screen flex flex-col md:flex-row items-stretch bg-cover bg-center"
+        style="background-image: url('{{ asset('images/work-3938876_1280.jpg') }}')">
 
-        <div class="fixed inset-0 overflow-hidden pointer-events-none">
-            <div
-                class="absolute -top-40 -right-40 w-80 h-80 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-10">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+
+        <div class="hidden md:flex md:w-1/2 flex-col justify-center p-12 z-10 text-white">
+            <div class="animate-fadeIn">
+                <div class="text-sm font-semibold uppercase tracking-wider mb-2">Postico</div>
+                <h1 class="text-5xl font-bold mb-4 leading-tight">
+                    EXPLORE<br>
+                    HORIZONS
+                </h1>
+                <p class="text-lg mb-2">Where your writing dreams become reality.</p>
+                <p class="text-sm opacity-80 max-w-md">
+                    Embark on a journey where every corner of the blogging world is within your reach.
+                    Share your stories, inspire others, and connect with like-minded writers.
+                </p>
             </div>
+        </div>
+
+        <div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 z-10">
             <div
-                class="absolute -bottom-40 -left-40 w-80 h-80 bg-gray-200 rounded-full mix-blend-multiply filter blur-xl opacity-10">
+                class="w-full max-w-md p-6 md:p-8 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg shadow-lg animate-fadeIn">
+                {{ $slot }}
             </div>
-        </div>
-
-        <div>
-            <a href="/" class="group transform transition-all duration-300 hover:scale-110">
-                <img src="{{ asset('postico.png') }}" alt="Postico" class="w-20 h-20">
-            </a>
-        </div>
-
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-8 bg-white border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 rounded-lg group transform hover:-translate-y-1">
-            {{ $slot }}
-        </div>
-
-        <div class="mt-8 text-center text-gray-500">
-            <p>&copy; 2024 Postico. All rights reserved.</p>
         </div>
     </div>
 
@@ -61,6 +63,22 @@
 
         .animate-gradient {
             animation: gradient 3s ease infinite;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
         }
     </style>
 </body>
