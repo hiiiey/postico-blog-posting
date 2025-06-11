@@ -21,6 +21,9 @@ Route::get('/@{username}/{post:slug}', [PostController::class, 'show'])
 Route::get('/category/{category}', [PostController::class, 'category'])
     ->name('post.byCategory');
 
+Route::get('/search', [PostController::class, 'search'])
+    ->name('search');
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/post/create', [PostController::class, 'create'])
@@ -50,7 +53,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/clap/{post}', [ClapController::class, 'clap'])
         ->name('clap');
 
-    // Notification routes
     Route::get('/notifications', [NotificationController::class, 'index'])
         ->name('notifications.index');
     Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])
