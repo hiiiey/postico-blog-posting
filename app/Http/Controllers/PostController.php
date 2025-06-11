@@ -186,4 +186,28 @@ class PostController extends Controller
             'posts' => $posts,
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+
+        if (empty($query)) {
+            return redirect()->route('dashboard');
+        }
+
+        $posts = Post::with(['user', 'category'])
+            ->where('published_at', '<=', now())
+            ->where(function ($q) use ($query) {
+                $q->where('title', 'like', "%{$query}%")
+                    ->orWhere('content', 'like', "%{$query}%");
+            })
+            ->withCount('claps')
+            ->latest()
+            ->paginate(10);
+
+        return view('post.index', [
+            'posts' => $posts,
+            'searchQuery' => $query
+        ]);
+    }
 }

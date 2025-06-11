@@ -10,13 +10,15 @@
 
             <div class="flex items-center space-x-5">
                 <div class="hidden md:flex items-center bg-gray-100 rounded-full px-3 py-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <input type="text" placeholder="Search"
-                        class="bg-transparent border-none outline-none p-1 text-sm w-56">
+                    <form action="{{ route('search') }}" method="GET" class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                        <input type="text" name="q" placeholder="Search" value="{{ request('q') }}"
+                            class="bg-transparent border-none outline-none p-1 text-sm w-56">
+                    </form>
                 </div>
 
                 @auth
@@ -152,6 +154,19 @@
 
     <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <div class="px-4 py-2">
+                <form action="{{ route('search') }}" method="GET"
+                    class="flex items-center bg-gray-100 rounded-full px-3 py-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" name="q" placeholder="Search" value="{{ request('q') }}"
+                        class="bg-transparent border-none outline-none p-1 text-sm w-full">
+                </form>
+            </div>
+
             @auth
             <x-responsive-nav-link :href="route('profile.edit')">
                 {{ __('Profile') }}
