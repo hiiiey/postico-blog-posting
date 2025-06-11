@@ -43,11 +43,13 @@
                             </a>
 
                             @auth
+                            @if(auth()->id() !== $post->user->id)
                             <button x-text="following ? 'Following' : 'Follow'"
                                 :class="following ? 'bg-gray-200 text-gray-800' : 'bg-medium-green text-white'"
                                 class="ml-2 px-3 py-1 text-xs rounded-full font-medium transition-colors duration-200"
                                 @click="follow()">
                             </button>
+                            @endif
                             @endauth
                         </x-follow-ctr>
                     </div>
